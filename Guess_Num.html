@@ -1,0 +1,159 @@
+<!--Make a Game to Guess Number-->
+<html>
+    <head>
+        <style>
+            body
+            {
+                background-image: linear-gradient(orange,white,green);
+            }
+            .gameArea
+            {
+                border: 10px solid yellow;
+                border-radius: 5px;
+                outline: 10px solid aqua;
+                height: 90%;
+                width: 30%;
+                margin: auto;
+                padding: 5px;
+            }
+            #txt
+            {
+                font-size: 30px;
+                font-weight: bold;
+                text-align: center;
+            }
+            .num1,.num2
+            {
+                display: inline-block;
+                height: 80px;
+                width: 80px;
+                margin: auto;
+                outline: 5px solid yellow;
+                border: 4px solid black;
+                margin: 5px;
+                text-align: center;
+                font-weight: bold;
+                font-size: 70px;
+                padding: 5px;
+            }
+            .num1
+            {
+                margin-left: 60px;
+            }
+            .multi
+            {
+                display: inline-block;
+                margin: auto;
+                text-align: center;
+                font-size: 110px;
+                font-family: Arial;
+            }
+            .num2
+            {                
+                margin: auto;
+            }
+            #txt1
+            {
+                font-size: 30px;
+                text-align: center;
+                font-weight: bold;
+                color: brown;
+            }
+            #user,#show
+            {
+                margin-left: 135px;
+                height: 40px;
+                width: 100px;
+                border: 4px solid black;
+                font-size: 25px;
+                font-weight: bold;
+                color: blue;
+                outline: 2px solid aqua;
+            }
+            #warn,#show
+            {
+                margin-top: 10px;
+            }
+            input[type="button"]
+            {
+                cursor: pointer;
+                margin: 10px;
+                margin-left: 140px;
+                border: 2px solid;
+                height: 40px;
+                width: 80px;
+                font-weight: bold;
+                font-size: 22px;
+                border-radius: 10px;
+                outline: none;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                transition-duration: 2s;                
+            }
+            input[type="button"]:hover
+            {
+                background-color: black;
+                color: white;
+                border: 2px solid black;
+                padding: 2px;
+
+            }
+            #warn
+            {
+                font-weight: bolder;
+                font-size: 30px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="gameArea">
+            <p id="txt">Guess The Number and Check Your Luck</p>
+            <div class="num1"></div>
+            <p class="multi">X</p>
+            <div class="num2"></div>
+
+            <p id="txt1">Guess The Number</p>
+            <input type="number" id="user" required><br>
+            <div id="warn"></div><br>
+
+            <input type="text" id="show" readonly><br>
+            <input type="button" value="Show" onclick="ShowAns()">
+            
+        </div>
+        <script>
+            var num1=document.querySelector('.num1');
+            var multi=document.querySelector('.multi');
+            var num2=document.querySelector('.num2');
+            var user=document.querySelector('#user');
+            var warn=document.querySelector('#warn');
+            var Show_Ans=document.querySelector('#show');
+            
+            n1=Math.floor(Math.random()*10);
+            n2=Math.floor(Math.random()*10);
+            num1.innerHTML=n1;
+            num2.innerHTML=n2;
+            
+            function ShowAns()
+            {
+                if(user.value!="")
+                {
+                    val=parseInt(user.value);
+                    if(val==n1*n2)
+                    {
+                        warn.innerText="You are Correct";
+                        warn.style.color="blue";
+                        console.log(warn.innerHTML);
+                    }
+                    else
+                    {
+                        warn.style.color="red";
+                        warn.innerHTML="Wrong";
+                    }
+                    Show_Ans.value=n1*n2;
+                }
+                else
+                alert("Please Fill These Box");
+            }
+        </script>
+    </body>
+</html>
